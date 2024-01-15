@@ -10,6 +10,7 @@ const speakerRoutes = require("./speakers/speaker-routes");
 const eventRoutes = require("./events/event-routes");
 const ticketRoutes = require("./tickets/ticket-routes");
 const cartRoutes = require("./cart/cart-routes");
+const orderRoutes = require("./orders/order-routes");
 const homeRoutes = require("./homeRoutes");
 
 const session = require('express-session');
@@ -39,8 +40,9 @@ app.use(sponsorRoutes);
 app.use(speakerRoutes);
 app.use(eventRoutes);
 app.use(ticketRoutes);
-app.use(cartRoutes);
 app.use(homeRoutes);
+app.use(cartRoutes);
+app.use(orderRoutes);
 
 mongoose
   .connect(MONGO_DB_CONNECTION_STRING)
