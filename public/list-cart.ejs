@@ -1,0 +1,112 @@
+<!-- shopping-cart.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <!-- Includerea iconitelor Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-c5YziFZl5I73+KpPFUJ3JzmbbJnHGzg6L+M6N9v0kA4Wj5Q+ZhhM8i7F/ExDz3eF" crossorigin="anonymous">
+    <!-- Stilizarea CSS pentru cosul de cumparaturi -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .cart-item img {
+            max-width: 50px;
+            margin-right: 10px;
+        }
+
+        .cart-item-details {
+            flex-grow: 1;
+        }
+
+        .cart-item-actions {
+            display: flex;
+            align-items: center;
+        }
+
+        .cart-total {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .btn {
+            padding: 5px 10px;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+
+        .btn-danger {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Shopping Cart</h1>
+
+    <% if (cart.length === 0) { %>
+        <p>Your shopping cart is empty.</p>
+    <% } else { %>
+        <% cart.forEach(item => { %>
+            <div class="cart-item">
+                <img src="<%= item.image %>" alt="<%= item.name %>">
+                <div class="cart-item-details">
+                    <h3><%= item.name %></h3>
+                    <p><%= item.price %> USD</p>
+                </div>
+                <div class="cart-item-actions">
+                    <button class="btn btn-danger" onclick="removeFromCart('<%= item.id %>')">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        <% }); %>
+
+        <div class="cart-total">
+            <h3>Total: <%= calculateTotal(cart) %> USD</h3>
+            <button class="btn btn-success" onclick="checkout()">Checkout</button>
+        </div>
+    <% } %>
+
+    <!-- Funcții JavaScript pentru acțiunile butoanelor -->
+    <script>
+        function removeFromCart(itemId) {
+            // Implementează funcționalitatea pentru a elimina produsul din coș
+            console.log("Removing item with ID: " + itemId);
+        }
+
+        function checkout() {
+            // Implementează funcționalitatea pentru a finaliza comanda
+            console.log("Checking out...");
+        }
+
+        function calculateTotal(cart) {
+            // Implementează funcționalitatea pentru a calcula totalul coșului
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price;
+            });
+            return total.toFixed(2);
+        }
+    </script>
+</body>
+</html>

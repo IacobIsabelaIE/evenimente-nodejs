@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nodejs Cluj Events</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            .navbg {
+                background-color: #7F78D2 !important;
+                font-family: 'Nunito', sans-serif;
+            }
+
+            .nav-white {
+                color: white !important;
+            }
+
+            body {
+                background-color: #f0f0f7;
+            }
+
+            .dashboard-panel {
+                background-color: #ffffff;
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+                margin-top: 30px;
+                padding: 20px;
+                width: 60%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .dashboard-button-container {
+                margin-top: 20px;
+            }
+
+            .dashboard-button {
+                background-color: #7F78D2;
+                border: none;
+                color: white;
+                border-radius: 20px;
+                padding: 10px 20px;
+                margin: 10px; 
+                text-transform: uppercase;
+                text-decoration: none; 
+                display: inline-block;
+            }
+
+            .dashboard-button:hover {
+                background-color: #6c5fb0;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbg">
+            <div class="container-fluid">
+                <a class="navbar-brand px-5 nav-white" href="/">📅 SpecialEvents</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link nav-white" href="/event">Evenimente</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-white" href="/speaker">Speakeri</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-white" href="/sponsor">Sponsori</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-white" href="/partener">Parteneri</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-white" href="/ticket">Bilete</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav ms-auto">
+                        <% if (!user) { %>
+                            <li class="nav-item px-5">
+                                <a class="nav-link nav-white" href="/login">Login Admin</a>
+                            </li>
+                        <% } else { %>
+                            <li class="nav-item px-5">
+                                <a class="nav-link nav-white" href="/register">Register Admin</a>
+                            </li>
+                            <li class="nav-item px-5">
+                                <a class="nav-link nav-white" href="/logout">Logout</a>
+                            </li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="dashboard-panel text-center">
+            <h1>📅 SpecialEvents</h1>
+            <div class="dashboard-button-container">
+                <a href="/partener" class="dashboard-button">Partener</a>
+                <a href="/speaker" class="dashboard-button">Speaker</a>
+                <a href="/sponsor" class="dashboard-button">Sponsor</a>
+                <a href="/event" class="dashboard-button">Eveniment</a>
+                <a href="/ticket" class="dashboard-button">Bilet</a>
+            </div>
+        </div>
+    
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    

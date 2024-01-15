@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nodejs Cluj Events</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f0f0f7;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .navbg {
+      background-color: #7F78D2;
+    }
+
+    .nav-white {
+      color: white;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin-top: 50px;
+      padding: 20px;
+    }
+
+    h1, label {
+      color: #7F78D2;
+    }
+
+    .form-control, .btn-custom {
+      border-radius: 0;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-control {
+      border: 2px solid #7F78D2;
+      color: #333;
+    }
+
+    .form-control::placeholder {
+      color: #666;
+    }
+
+    .form-control:focus {
+      border-color: #5A55A3;
+      box-shadow: 0 0 0 0.2rem rgba(79, 70, 229, 0.25);
+    }
+
+    .btn-custom {
+      background-color: #7F78D2;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-transform: uppercase;
+      box-shadow: none;
+    }
+
+    .btn-custom:hover, .btn-custom:focus {
+      background-color: #5A55A3;
+    }
+
+    @media (max-width: 768px) {
+      .card {
+        margin: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbg">
+    <div class="container-fluid">
+      <a class="navbar-brand px-5 nav-white" href="/">📅 SpecialEvents</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link nav-white" href="/event">Evenimente</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-white" href="/speaker">Speakeri</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-white" href="/sponsor">Sponsori</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link nav-white" href="/partener">Parteneri</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link nav-white" href="/ticket">Bilete</a>
+                </li>
+                </ul>
+                <ul class="navbar-nav ms-auto">
+                    <% if (!user) { %>
+                        <li class="nav-item px-5">
+                            <a class="nav-link nav-white" href="/login">Login Admin</a>
+                        </li>
+                        <% } else { %>
+                        <li class="nav-item px-5">
+                            <a class="nav-link nav-white" href="/register">Register Admin</a>
+                        </li>
+                        <li class="nav-item px-5">
+                            <a class="nav-link nav-white" href="/logout">Logout</a>
+                        </li>
+                        </ul>
+                        <% } %>
+        </div>
+    </div>
+</nav>
+
+  <div class="container">
+    <div class="card">
+      <h1 class="text-center">Inregistrare</h1> 
+      <h3><%=succesMessage ? succesMessage : ''%></h3>
+      <form action="/register" method="post">
+        <div class="mb-3">
+          <label for="username" class="form-label">Username:</label>
+          <input type="text" class="form-control" id="username" name="username" required>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">Email:</label>
+          <input type="email" class="form-control" id="email" name="email" required>
+        </div>
+        <div class="mb-3">
+          <label for="nume" class="form-label">Nume:</label>
+          <input type="text" class="form-control" id="nume" name="nume" required>
+        </div>
+        <div class="mb-3">
+          <label for="prenume" class="form-label">Prenume:</label>
+          <input type="text" class="form-control" id="prenume" name="prenume" required>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">Parola:</label>
+          <input type="password" class="form-control" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-custom w-100">Trimite</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
