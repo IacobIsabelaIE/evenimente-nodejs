@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const {
-  
+  getAllPartners, newPartnerForm, addPartner, editPartner, editPartnerForm, deletePartner
 } = require("./partner-controller");
 
 router.get("/partener", getAllPartners);
